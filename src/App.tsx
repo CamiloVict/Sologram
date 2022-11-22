@@ -2,9 +2,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { GlobalStyle } from './styles/GlobalStyle'
 
 // * Components
-import { NavHeader } from './components/Header/Header'
+import { NavHeader } from './components/NavHeader/NavHeader'
 import { FooterNav } from './components/FooterNav/FooterNav'
 import { Card } from './components/Card/Card'
+import Layout from './components/Layout/Layout'
+import HomePage from './components/Pages/HomePage'
 
 function App() {
 
@@ -12,9 +14,9 @@ function App() {
     <>
       <BrowserRouter >
         <GlobalStyle />
-          <NavHeader />
-            <Card />
-          <FooterNav />
+        <Layout >
+          <HomePage />
+        </Layout>
       </BrowserRouter>
     </>
   )

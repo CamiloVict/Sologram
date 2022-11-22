@@ -3,7 +3,6 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
 html {
-  @import url("https://fonts.googleapis.com/css?family=Noto+Sans:wght@100&display=swap");
 
   box-sizing: border-box;
   font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

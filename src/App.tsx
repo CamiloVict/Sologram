@@ -4,6 +4,7 @@ import { GlobalStyle } from './styles/GlobalStyle'
 // * Components
 import { NavHeader } from './components/Header/Header'
 import { FooterNav } from './components/FooterNav/FooterNav'
+import { Card } from './components/Card/Card'
 
 function App() {
 
@@ -11,9 +12,9 @@ function App() {
     <>
       <BrowserRouter >
         <GlobalStyle />
-        <NavHeader />
-          Content
-        <FooterNav />
+          <NavHeader />
+            <Card />
+          <FooterNav />
       </BrowserRouter>
     </>
   )

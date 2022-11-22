@@ -12,8 +12,8 @@ export const Header = styled.header`
   justify-content: space-around;
   left: 0;
   right: 0;
-  margin: 0 auto;
-  position: fixed;
+  /* margin: 0 auto; */
+  /* position: fixed; */
   width: 100%;
   z-index: 1000;
 `;

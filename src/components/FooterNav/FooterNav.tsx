@@ -1,5 +1,6 @@
 import { VscHome } from "react-icons/vsc";
-import { CiSquarePlus } from "react-icons/ci";
+import { AiOutlineUser } from "react-icons/ai";
+import {AiOutlinePlusSquare} from 'react-icons/ai'
 
 // *Components
 import { Header } from "./style"
@@ -10,8 +11,9 @@ export const FooterNav = () => {
 
   return (
     <Header>
+      <AiOutlineUser size={SIZE} />
       <VscHome size={SIZE} />
-      <CiSquarePlus size={SIZE}  />
+      <AiOutlinePlusSquare size={SIZE}  />
     </Header>
   )
 }

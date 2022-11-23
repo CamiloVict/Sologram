@@ -3,24 +3,28 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface IImage {
   source: string;
+  filter?: string;
 }
 
 const initialState: IImage = {
-  source: "",
+  source: '',
+  filter: ''
 };
 
 export const gettingImage = createSlice({
   name: "image",
   initialState,
   reducers: {
-    setSource: (state, action: PayloadAction<string>) => {
-      console.log('17  >>> ', action);
+    changeSource: (state, action: PayloadAction<string>) => {
       state.source = action.payload;
+    },
+    changeFilter: (state, action: PayloadAction<string>) => {
+      state.filter = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setSource } = gettingImage.actions;
+export const { changeSource, changeFilter } = gettingImage.actions;
 
 export default gettingImage.reducer;

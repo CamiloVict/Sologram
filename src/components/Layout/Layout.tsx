@@ -12,7 +12,6 @@ function Layout(props: any) {
       <Container>
         {children}
       </Container>
-
       <FooterNav />
     </>
   );

@@ -23,22 +23,9 @@ export const Card = () => {
         </ArticleInfo>
           <Link to={`/detail/${'id'}`}>
             <ImgWrapper>
-              <Image src={imageUrlTest} />
+              <Image src={imageUrlTest} filter='' alt='Main image'/>
             </ImgWrapper>
           </Link>
-          {/* <ToggleLikeMutation>
-                        {
-                            (toggleLike) => {
-                                const handleClick = () => {
-                                !liked && toggleLike({variables:{
-                                    input: {id}
-                                }})
-                                    setLiked(!liked)
-                                }
-                                return <FavButton liked={liked} likes={likes} onClick={handleClick} />
-                            }
-                        }
-                    </ToggleLikeMutation> */}
         </>
       }
     </Article>

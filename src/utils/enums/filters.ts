@@ -1,11 +1,11 @@
 
 export const filtersEnum = [
-    'normal',
-    'sepia',
-    'contrast',
-    'saturate',
-    'grey',
-    'hue',
-    'hue180',
-    'hue280'
+    'Normal',
+    'Sepia',
+    'Contrast',
+    'Saturate',
+    'Grey',
+    'Hue',
+    'Hue180',
+    'Hue280'
 ]

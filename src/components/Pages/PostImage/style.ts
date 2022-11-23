@@ -5,7 +5,6 @@ export const ContainerForm = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 8px;
 `;
 
 export const Label = styled.label`
@@ -20,6 +19,7 @@ export const Input = styled.input`
   width: 100%;
   display: block;
   transition: all 0.3s;
+  font-size: 18px;
 `;
 
 export const Button = styled.button`

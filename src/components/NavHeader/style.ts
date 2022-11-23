@@ -13,5 +13,6 @@ export const Header = styled.header`
   left: 0;
   right: 0;
   width: 100%;
+  position: fixed;
   z-index: 1000;
 `;

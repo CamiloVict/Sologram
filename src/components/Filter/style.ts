@@ -1,19 +1,23 @@
 import styled, { css } from "styled-components";
 
+export const ContainerThumbnail = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+`
+
 export const Title = styled.div`
-  width: 60px;
-  height: 60px;
-  min-width: 60px;
-  margin-right: 8px;
-  display: block;
-  font-size: 12px;
+  font-size: 6px;
+  color: black;
 `;
 
 export const Thumbnails = styled.img<{ filter: string }>`
-  width: 70px;
-  height: 70px;
-  min-width: 70px;
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
   margin-right: 8px;
+  object-fit: cover;
   aspect-ratio: 1/1;
     ${(props) =>
       props.filter &&

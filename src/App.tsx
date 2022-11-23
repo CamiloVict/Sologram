@@ -1,23 +1,26 @@
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { GlobalStyle } from './styles/GlobalStyle'
 
 // * Components
-import { NavHeader } from './components/NavHeader/NavHeader'
-import { FooterNav } from './components/FooterNav/FooterNav'
-import { Card } from './components/Card/Card'
 import Layout from './components/Layout/Layout'
-import HomePage from './components/Pages/HomePage'
-import PostImage from './components/Pages/PostImage/PostImage'
+import { lazy, Suspense } from 'react'
 
 function App() {
-
+  const HomePage = lazy(() => import('./components/Pages/Home/HomePage'));
+  const PostImage = lazy(() => import('./components/Pages/PostImage/PostImage'));
+  const AuthPage = lazy(() => import('./components/Pages/AuthPage/AuthPage'))
   return (
     <>
       <BrowserRouter >
         <GlobalStyle />
         <Layout >
-          {/* <HomePage /> */}
-          <PostImage />
+          <Suspense fallback={<p> Loading...</p>}>
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/post' element={<PostImage />} />
+              <Route path='/auth' element={<AuthPage />} />
+            </Routes>
+          </Suspense>
         </Layout>
       </BrowserRouter>
     </>

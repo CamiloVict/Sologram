@@ -5,8 +5,7 @@ export const Article = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: black;
-  /* min-height: 300px; */
+  /* background-color: black; */
   border-radius: 10px;
 `;
 export const ImgWrapper = styled.div`

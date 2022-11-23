@@ -9,14 +9,16 @@ import { BsUpload } from 'react-icons/bs'
 // * Store
 import { useSelector, useDispatch } from 'react-redux'
 import { changeSource } from "../../../../src/store/reducerImage"
-
+// *Enums
+import { filtersEnum } from '../../../utils/enums/filters'
 
 const PostImage = () => {
   const imageUrlTest: string = 'https://www.businessinsider.in/thumb/msid-87162892,width-700,resizemode-4,imgsize-36280/cryptocurrency/news/most-expensive-bored-ape-nft-sells-for-2-7-million/trippy-bored-ape.jpg'
   const size: string = '100px'
   // *States
   const [imageUrl, setImageUrl] = useState<string>('')
-  const [show, setShow] = useState<boolean>(true)
+  const [show, setShow] = useState<boolean>(false)
+  const [name, setName] = useState<string>('')
 
   // * State Store
   const { image } = useSelector((state: any) => state);
@@ -24,6 +26,9 @@ const PostImage = () => {
 
   const handleOnChange = useCallback((event: any) =>
     setImageUrl(event.target.value), [imageUrl])
+
+  const handleOnChangeName = useCallback((event: any) =>
+    setName(event.target.value), [])
 
   const handleUpload = () => {
     try {
@@ -36,16 +41,23 @@ const PostImage = () => {
   }
 
   const handleClick = () => {
-    console.log('40  >>> Uploading...',);
+    console.log('40  >>> Uploading...', show);
+    console.log('43  >>>>>>>>> ');
+    try {
+      window.localStorage.setItem(name, JSON.stringify(image.source));
+    } catch (e) {
+      console.log('47  >>>>>>>>> ');
+      console.error(e);
+    }
   }
 
   return (
     <>
-        <ContainerForm>
-          <Label >Enter an Image URL</Label>
-          <Input placeholder='' onChange={(event) => handleOnChange(event)} />
-          <Button onClick={handleUpload} >Upload!</Button>
-        </ContainerForm>
+      <ContainerForm>
+        <Label >Enter an Image URL</Label>
+        <Input placeholder='' onChange={(event) => handleOnChange(event)} />
+        <Button onClick={handleUpload} >Upload!</Button>
+      </ContainerForm>
       <Article>
         <ImgWrapper>
           {image.source
@@ -55,12 +67,12 @@ const PostImage = () => {
         </ImgWrapper>
       </Article>
       <div>
-      <Label >Give it a name:</Label>
-      <Input placeholder='' onChange={(event) => handleOnChange(event)} />
+        <Label>Give it a name:</Label>
+        <Input placeholder='' onChange={(event) => handleOnChangeName(event)} />
       </div>
       <AllFilters />
 
-      <Button onClick={handleClick}>
+      <Button onClick={handleClick} disabled={show ? false : true} >
         Post Now!
       </Button>
     </>

@@ -5,9 +5,10 @@ export const Article = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: black;
+  background-color: transparent;
   min-height: 300px;
   border-radius: 10px;
+  margin-top: 8px;
 `;
 export const ImgWrapper = styled.div`
   border-radius: 10px;
@@ -15,15 +16,16 @@ export const ImgWrapper = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  aspect-ratio: 1/1;
   position: relative;
   width: 100%;
   margin: 0;
+  height: 350px;
 `;
 
 export const Image = styled.img`
   ${fadeIn() as any}
-  box-shadow: 0 10px 14px rgba(0,0,0,.2);
+  aspect-ratio: 1/1;
+  box-shadow: 0 10px 14px rgba(0, 0, 0, 0.2);
   height: 100%;
   object-fit: cover;
   position: absolute;
@@ -32,16 +34,16 @@ export const Image = styled.img`
 `;
 
 export const ArticleInfo = styled.div`
-  height: 35px;
+  height: 35px; ;
 `;
 
-export const ImageInfo = styled.h3<{size: string}>`
+export const ImageInfo = styled.h3<{ size: string }>`
   height: fit-content;
   ${(props) =>
     props.size &&
     css`
        {
-         font-size: ${props.size};
+        font-size: ${props.size};
       }
     `}
 `;

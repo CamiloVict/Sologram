@@ -7,6 +7,7 @@ import { FooterNav } from './components/FooterNav/FooterNav'
 import { Card } from './components/Card/Card'
 import Layout from './components/Layout/Layout'
 import HomePage from './components/Pages/HomePage'
+import PostImage from './components/Pages/PostImage/PostImage'
 
 function App() {
 
@@ -15,7 +16,8 @@ function App() {
       <BrowserRouter >
         <GlobalStyle />
         <Layout >
-          <HomePage />
+          {/* <HomePage /> */}
+          <PostImage />
         </Layout>
       </BrowserRouter>
     </>

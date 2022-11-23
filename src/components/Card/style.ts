@@ -5,14 +5,16 @@ export const Article = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 5px;
+  background-color: black;
   min-height: 300px;
+  border-radius: 10px;
 `;
 export const ImgWrapper = styled.div`
   border-radius: 10px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  /* padding: 56.25% 0 0 0; */
   aspect-ratio: 1/1;
   position: relative;
   width: 100%;

@@ -29,9 +29,14 @@ const HomePage = () => {
   }
 
   const renderCards = () => {
-    return image.list.map((item: any, indexItem: number) => {
+    const orderList = [... image.list]
+    return orderList.reverse().map((item: any, indexItem: number) => {
       const postTime: string | undefined = calcTime(item.date)
-      return <Card id={indexItem} title={item.name} source={item.src} date={postTime} key={indexItem} filter={item.filter} />
+      return (
+        <ul key={indexItem}>
+          <Card id={indexItem} title={item.name} source={item.src} date={postTime}  filter={item.filter} />
+        </ul>
+      )
     })
   }
 

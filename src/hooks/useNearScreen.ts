@@ -11,7 +11,8 @@ export const useNearScreen = () => {
         : require('intersection-observer' )
     ).then(() => {
       const observer = new window.IntersectionObserver(function (entries) {
-        const { isIntersecting } = entries[0]
+        const { isIntersecting} = entries[0]
+        console.log('15 isIntersecting >>> ', isIntersecting);
         if (isIntersecting) {
           setShow(true)
           observer.disconnect()

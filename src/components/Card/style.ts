@@ -16,7 +16,7 @@ export const ImgWrapper = styled.div`
   position: relative;
   width: 100%;
   margin: 0;
-  height: 300px;
+  height: 340px;
   object-fit: contain;
   background-color: black;
 `;

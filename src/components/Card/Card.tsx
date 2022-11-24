@@ -6,16 +6,17 @@ import { ICard } from './type'
 import { AiFillHeart } from 'react-icons/ai'
 import { useSelector, useDispatch } from 'react-redux'
 import { likeManage } from '../../../src/store/reducerImage'
-import { useEffect, useRef } from 'react'
+import { useState } from 'react'
 
 
 
 export const Card = ({ title, date, source, filter, id }: ICard): JSX.Element => {
+  //* Store
   const { image } = useSelector((state: any) => state);
   const dispatch = useDispatch()
-
-  const imageClick = useRef<HTMLDivElement>(null)
-  const [show, ref] = useNearScreen()
+  // *State
+  const [tapsNumber, setTapsNumber] = useState<number>(0);
+  const [startDate, setStartDate] = useState<number>(Date.now());
 
   const bigTitle: string = '10px'
   const smallTitle: string = '8px'
@@ -26,30 +27,29 @@ export const Card = ({ title, date, source, filter, id }: ICard): JSX.Element =>
     dispatch(likeManage({ id, liked: !liked }))
   }
 
-  imageClick.current?.addEventListener('dblclick', () => console.log('31  >>> ', 'entre'))
-
-  const handleDoubleClick = (event: any) => {
-    if (event.detail === 2) {
-      console.log('double click');
+  const handleDoubleClick = () => {
+    if (tapsNumber >= 1 && Date.now() - startDate < 500) {
+      setStartDate(Date.now());
+      setTapsNumber(0);
+      handleLike()
+    } else {
+      setStartDate(Date.now());
+      setTapsNumber(prevNr => prevNr + 1);
     }
-  }
+  };
 
   return (
-    <Article ref={ref as any}>
-      {show &&
-        <>
+    <Article >
           <ArticleInfo >
             <ImageInfo size={bigTitle} color={'black'} >{title}</ImageInfo>
             <ImageInfo size={smallTitle} color={'grey'}>{date as any}</ImageInfo>
           </ArticleInfo>
-          <ImgWrapper onClick={handleDoubleClick} ref={imageClick as any} >
-            <Image src={source} filter={filter as string} alt={title} />
+          <ImgWrapper  >
+            <Image src={source} filter={filter as string} alt={title} onClick={handleDoubleClick} />
             <HeartWrapped>
               <AiFillHeart color={image.list[id].liked ? 'red' : 'white'} size={mediumIcon} onClick={handleLike} />
             </HeartWrapped>
           </ImgWrapper>
-        </>
-      }
     </Article>
   )
 }

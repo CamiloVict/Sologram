@@ -1,35 +1,55 @@
-import { Link } from 'react-router-dom'
 import { useNearScreen } from '../../hooks/useNearScreen'
 
-import { ImgWrapper, Image, Article, ImageInfo, ArticleInfo } from './style'
+import { ImgWrapper, Image, Article, ImageInfo, ArticleInfo, HeartWrapped } from './style'
+import { ICard } from './type'
+
+import { AiFillHeart } from 'react-icons/ai'
+import { useSelector, useDispatch } from 'react-redux'
+import { likeManage } from '../../../src/store/reducerImage'
+import { useEffect, useRef } from 'react'
 
 
-export const Card = () => {
+
+export const Card = ({ title, date, source, filter, id }: ICard): JSX.Element => {
+  const { image } = useSelector((state: any) => state);
+  const dispatch = useDispatch()
+
+  const imageClick = useRef<HTMLDivElement>(null)
   const [show, ref] = useNearScreen()
-  // const [liked, setLiked] = useLocalStorage(key, false)
-  const imageUrlTest = 'https://www.businessinsider.in/thumb/msid-87162892,width-700,resizemode-4,imgsize-36280/cryptocurrency/news/most-expensive-bored-ape-nft-sells-for-2-7-million/trippy-bored-ape.jpg'
-  // const show = true;
 
   const bigTitle: string = '10px'
   const smallTitle: string = '8px'
+  const mediumIcon = '30px'
+
+  const handleLike = () => {
+    const liked = image.list[id].liked
+    dispatch(likeManage({ id, liked: !liked }))
+  }
+
+  imageClick.current?.addEventListener('dblclick', () => console.log('31  >>> ', 'entre'))
+
+  const handleDoubleClick = (event: any) => {
+    if (event.detail === 2) {
+      console.log('double click');
+    }
+  }
 
   return (
-    <Article ref = {ref as any}>
+    <Article ref={ref as any}>
       {show &&
         <>
-        <ArticleInfo >
-          <ImageInfo size={bigTitle} >Name</ImageInfo>
-          <ImageInfo size={smallTitle} >Date</ImageInfo>
-        </ArticleInfo>
-          <Link to={`/detail/${'id'}`}>
-            <ImgWrapper>
-              <Image src={imageUrlTest} filter='' alt='Main image'/>
-            </ImgWrapper>
-          </Link>
+          <ArticleInfo >
+            <ImageInfo size={bigTitle} color={'black'} >{title}</ImageInfo>
+            <ImageInfo size={smallTitle} color={'grey'}>{date as any}</ImageInfo>
+          </ArticleInfo>
+          <ImgWrapper onClick={handleDoubleClick} ref={imageClick as any} >
+            <Image src={source} filter={filter as string} alt={title} />
+            <HeartWrapped>
+              <AiFillHeart color={image.list[id].liked ? 'red' : 'white'} size={mediumIcon} onClick={handleLike} />
+            </HeartWrapped>
+          </ImgWrapper>
         </>
       }
     </Article>
   )
 }
-
-

@@ -5,11 +5,10 @@ export const Article = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* background-color: black; */
-  border-radius: 10px;
+  margin-bottom: 15px;
 `;
 export const ImgWrapper = styled.div`
-  border-radius: 10px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,19 +16,19 @@ export const ImgWrapper = styled.div`
   position: relative;
   width: 100%;
   margin: 0;
-  height: 250px;
+  height: 300px;
+  object-fit: contain;
+  background-color: black;
 `;
 
 export const Image = styled.img<{ filter: string }>`
   ${fadeIn() as any}
-  aspect-ratio: 1/1;
-  box-shadow: 0 10px 14px rgba(0, 0, 0, 0.2);
+  /* aspect-ratio: 1/1; */
+  /* box-shadow: 0 10px 14px rgba(0, 0, 0, 0.2); */
   height: 100%;
-  object-fit: cover;
   position: absolute;
   top: 0;
-  width: 100%;
-  object-fit: cover;
+  /* width: 100%; */
 
   ${(props) =>
     props.filter &&
@@ -41,16 +40,29 @@ export const Image = styled.img<{ filter: string }>`
 `;
 
 export const ArticleInfo = styled.div`
-  height: 35px; ;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 35px;
+  padding-left: 3px;
+  padding-bottom: 3px;
 `;
 
-export const ImageInfo = styled.h3<{ size: string }>`
+export const ImageInfo = styled.h3<{ size: string; color: string }>`
   height: fit-content;
   ${(props) =>
     props.size &&
     css`
        {
+        color: ${props.color};
         font-size: ${props.size};
       }
     `}
+`;
+
+export const HeartWrapped = styled.div`
+  position: absolute;
+  right: 5px;
+  bottom: 2px;
+  z-index: 1;
 `;

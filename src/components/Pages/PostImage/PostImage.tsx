@@ -8,13 +8,13 @@ import { AllFilters } from '../../AllFilters/AllFilters'
 import { BsUpload } from 'react-icons/bs'
 // * Store
 import { useSelector, useDispatch } from 'react-redux'
-import { changeSource } from "../../../../src/store/reducerImage"
-// *Enums
-import { filtersEnum } from '../../../utils/enums/filters'
+import { changeFilter, changeSource } from "../../../../src/store/reducerImage"
+// * Router
+import { useNavigate } from 'react-router-dom';
 
 const PostImage = () => {
-  const imageUrlTest: string = 'https://www.businessinsider.in/thumb/msid-87162892,width-700,resizemode-4,imgsize-36280/cryptocurrency/news/most-expensive-bored-ape-nft-sells-for-2-7-million/trippy-bored-ape.jpg'
   const size: string = '100px'
+
   // *States
   const [imageUrl, setImageUrl] = useState<string>('')
   const [show, setShow] = useState<boolean>(false)
@@ -24,11 +24,15 @@ const PostImage = () => {
   const { image } = useSelector((state: any) => state);
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const handleOnChange = useCallback((event: any) =>
-    setImageUrl(event.target.value), [imageUrl])
+    setImageUrl(event.target.value), [imageUrl]
+  )
 
   const handleOnChangeName = useCallback((event: any) =>
-    setName(event.target.value), [])
+    setName(event.target.value), []
+  )
 
   const handleUpload = () => {
     try {
@@ -41,14 +45,35 @@ const PostImage = () => {
   }
 
   const handleClick = () => {
-    console.log('40  >>> Uploading...', show);
-    console.log('43  >>>>>>>>> ');
-    try {
-      window.localStorage.setItem(name, JSON.stringify(image.source));
-    } catch (e) {
-      console.log('47  >>>>>>>>> ');
-      console.error(e);
+    const date = new Date()
+    const listPost = window.localStorage.getItem('posts')
+
+    if (!listPost) {
+      try {
+        window.localStorage.setItem('posts', JSON.stringify([
+          {
+            src: image.source,
+            name: name,
+            filter: image.filter,
+            date: date
+          }
+        ]));
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
+      const listPostParse = JSON.parse(listPost)
+      listPostParse.push({
+        src: image.source,
+        name: name,
+        filter: image.filter,
+        date: date
+      })
+      window.localStorage.setItem('posts', JSON.stringify(listPostParse))
     }
+    navigate('/')
+    dispatch(changeSource(''))
+    dispatch(changeFilter(''))
   }
 
   return (
@@ -72,7 +97,7 @@ const PostImage = () => {
       </div>
       <AllFilters />
 
-      <Button onClick={handleClick} disabled={show ? false : true} >
+      <Button onClick={handleClick} >
         Post Now!
       </Button>
     </>

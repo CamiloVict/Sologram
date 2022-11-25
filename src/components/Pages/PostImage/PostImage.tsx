@@ -1,5 +1,5 @@
 // * Dependencies
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useState } from "react"
 // *Components
 import { ContainerForm, Label, Input, Button, ContainerPage, Division } from "./style"
 import { ImgWrapper, Image, Article } from '../../Card/style'
@@ -22,11 +22,6 @@ const PostImage = () => {
   const [imageUrl, setImageUrl] = useState<string>('')
   const [show, setShow] = useState<boolean>(true)
   const [name, setName] = useState<string>('')
-
-  // useEffect(() => {
-  //   windowSize <= 600 && setShow(!show)
-  // }, [windowSize])
-  
 
   // * State Store
   const { image } = useSelector((state: any) => state);
@@ -106,7 +101,7 @@ const PostImage = () => {
       </Division>
 
       <Division>
-        <ContainerForm>
+        <ContainerForm padding={'60px'}>
           <Label>Give it a name:</Label>
           <Input placeholder='' onChange={(event) => handleOnChangeName(event)} />
         </ContainerForm>

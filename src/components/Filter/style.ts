@@ -20,8 +20,9 @@ export const Thumbnails = styled.img<{ filter: string }>`
   width: 100px;
   height: 100px;
   min-width: 100px;
-  object-fit: cover;
+  object-fit: contain;
   aspect-ratio: 1/1;
+  background-color: black;
   @media (max-width: 500px) {
     width: 80px;
     height: 80px;

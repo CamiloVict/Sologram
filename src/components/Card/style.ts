@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
-import { fadeIn } from "../../styles/animations";
+import { fadeInKeyFrames } from "../../styles/animations";
 
 export const Article = styled.article`
+  min-height: 340px;
   @media (max-width: 500px) {
-    ${fadeIn() as any}
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -12,7 +12,7 @@ export const Article = styled.article`
 `;
 
 export const ImgWrapper = styled.div`
-  
+  animation: ${fadeInKeyFrames} 0.8s ease;
   width: 340px;
   height: 340px;
   position: relative;
@@ -22,21 +22,19 @@ export const ImgWrapper = styled.div`
   overflow: hidden;
   position: relative;
   background-color: black;
-
+  aspect-ratio: 1/1;
   @media (max-width: 500px) {
     width: 100vw;
     margin: 0;
     height: 340px;
-    object-fit: contain;
   }
 `;
 
 export const Image = styled.img<{ filter: string }>`
-  /* @media (max-width: 500px) { */
   height: 100%;
-  position: absolute;
-  top: 0;
-  /* } */
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
   ${(props) =>
     props.filter &&
     css`
@@ -72,8 +70,8 @@ export const ImageInfo = styled.h3<{ size: string; color: string }>`
 `;
 
 export const HeartWrapped = styled.div`
-    position: absolute;
-    right: 5px;
-    bottom: 2px;
-    z-index: 1;
+  position: absolute;
+  right: 5px;
+  bottom: 2px;
+  z-index: 1;
 `;

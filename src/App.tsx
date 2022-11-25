@@ -20,6 +20,7 @@ function App() {
         <GlobalStyle />
         <Layout>
           <Routes>
+            <Route path='/' element={<HomePage />} />
             <Route path='/home' element={<HomePage />} />
             <Route path='/auth' element={<AuthPage />} />
           </Routes>
@@ -27,11 +28,11 @@ function App() {
             {({ isAuth }: any) => {
               return isAuth
                 ? <Routes>
-                    <Route path='/post' element={<PostImage />} />
-                  </Routes>
+                  <Route path='/post' element={<PostImage />} />
+                </Routes>
                 : <Routes>
-                    <Route path='/post' element={<NotRegisteredUser />} />
-                  </Routes>
+                  <Route path='/post' element={<NotRegisteredUser />} />
+                </Routes>
             }
             }
           </Context.Consumer>

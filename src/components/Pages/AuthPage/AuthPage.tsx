@@ -15,12 +15,28 @@ const AuthPage = () => {
   const [password, setPassword] = useState('')
 
   const handleClick = () => {
-    if (email && password !== '') {
+    if (email && password === '') {
+      return alert('All the information is required')
+    }
+
+    const emailCheck = ValidateEmail(email)
+    console.log('23 emailCheck >>> ', emailCheck);
+    if (emailCheck) {
       activateAuth()
       window.localStorage.setItem('auth', JSON.stringify(isAuth))
       navigate('/home')
+    }
+  }
+
+
+  const ValidateEmail = (input: any) => {
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if (input.match(validRegex)) {
+      return true;
     } else {
-      alert('Please check the information below')
+      alert('Invalid email address')
+      return false;
     }
   }
 
@@ -35,7 +51,6 @@ const AuthPage = () => {
       <Button width={'30%'} onClick={handleClick} >Log In...</Button>
     </ContainerAuthPage>
   )
-
 }
 
 export default AuthPage

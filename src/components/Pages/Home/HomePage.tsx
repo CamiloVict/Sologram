@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react"
+// * Component
+import { ErrorComponent } from "../../../../src/components/Error/Error";
 import { Card } from "../../Card/Card"
 // * Store
 import { useSelector, useDispatch } from 'react-redux'
 import { changeList } from "../../../../src/store/reducerImage";
-// * Icons
-import { MdOutlineErrorOutline } from 'react-icons/md'
 
 import moment from 'moment'
 import { ContainerList } from "./style";
 
 const HomePage = () => {
+  const noPost: string = 'You have no post'
   // *State
   const [loading, setLoading] = useState<boolean>(true)
   const { image } = useSelector((state: any) => state);
@@ -37,12 +38,10 @@ const HomePage = () => {
       )
     })
   }
-
   return (
     <ContainerList>
       {loading
-        // ! Create error component
-        ? <div> <MdOutlineErrorOutline /> You don't have any post</div>
+        ? <ErrorComponent title={noPost} />
         : renderCards()
       }
     </ContainerList>

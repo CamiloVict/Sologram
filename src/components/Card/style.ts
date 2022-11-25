@@ -22,21 +22,19 @@ export const ImgWrapper = styled.div`
   overflow: hidden;
   position: relative;
   background-color: black;
-
+  aspect-ratio: 1/1;
   @media (max-width: 500px) {
     width: 100vw;
     margin: 0;
     height: 340px;
-    object-fit: contain;
   }
 `;
 
 export const Image = styled.img<{ filter: string }>`
-  /* @media (max-width: 500px) { */
   height: 100%;
-  position: absolute;
-  top: 0;
-  /* } */
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
   ${(props) =>
     props.filter &&
     css`

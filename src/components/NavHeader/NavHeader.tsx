@@ -17,7 +17,7 @@ export const NavHeader = () => {
   return (
     <Header>
       <Logo />
-      <h6 style={{position: 'absolute', right: '20px'}} onClick={handleLogOut} >
+      <h6 style={{position: 'absolute', right: '20px', cursor: 'pointer'}} onClick={handleLogOut} >
         Log out
       </h6>
     </Header>

@@ -1,33 +1,18 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import { fadeInKeyFrames } from "../../styles/animations";
-
-// Create the keyframes
-const fadeIn = keyframes`
-   from{
-    filter: blur(5px);
-    opacity: 0;    
-  }
-
-  to{
-    filter: blur(0);
-    opacity:1;
-  }
-`;
 
 export const Article = styled.article`
   min-height: 340px;
-
   @media (max-width: 500px) {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     margin-bottom: 15px;
-    animation: "1s" ${fadeInKeyFrames} "ease";
   }
 `;
 
 export const ImgWrapper = styled.div`
-  animation: ${fadeIn} 0.8s ease;
+  animation: ${fadeInKeyFrames} 0.8s ease;
   width: 340px;
   height: 340px;
   position: relative;

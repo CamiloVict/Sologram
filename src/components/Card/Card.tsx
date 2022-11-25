@@ -45,7 +45,6 @@ export const Card = ({ title, date, source, filter, id }: ICard): JSX.Element =>
 
   return (
     <Article ref={ref} >
-      {console.log(entry?.isIntersecting, title)}
       {entry?.isIntersecting &&
         <>
           <ArticleInfo >

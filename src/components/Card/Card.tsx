@@ -18,8 +18,7 @@ export const Card = ({ title, date, source, filter, id }: ICard): JSX.Element =>
   const [tapsNumber, setTapsNumber] = useState<number>(0);
   const [startDate, setStartDate] = useState<number>(Date.now());
 
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
+  const { ref, entry } = useInView({
     threshold: 0.2,
   });
 

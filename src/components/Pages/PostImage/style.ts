@@ -14,7 +14,11 @@ export const ContainerPage = styled.div`
   }
 `;
 
-export const ContainerForm = styled.div<{ width?: string; height?: string; padding?: string }>`
+export const ContainerForm = styled.div<{
+  width?: string;
+  height?: string;
+  padding?: string;
+}>`
   height: max-content;
   display: flex;
   flex-direction: column;
@@ -31,6 +35,10 @@ export const ContainerForm = styled.div<{ width?: string; height?: string; paddi
         height: ${props.height};
       }
     `}
+
+  @media (max-width: 500px) {
+    padding-top: 0;
+  }
 `;
 
 export const Label = styled.label`
@@ -43,7 +51,11 @@ export const Label = styled.label`
   }
 `;
 
-export const Input = styled.input<{ width?: string; margin?: string; type?: string }>`
+export const Input = styled.input<{
+  width?: string;
+  margin?: string;
+  type?: string;
+}>`
   color: #333;
   font-size: 1.2rem;
   border-radius: 0.2rem;
@@ -67,7 +79,7 @@ export const Input = styled.input<{ width?: string; margin?: string; type?: stri
   }
 `;
 
-export const Button = styled.button<{width?:string}>`
+export const Button = styled.button<{ width?: string }>`
   border-radius: 5px;
   cursor: pointer;
   margin: 5px 0;

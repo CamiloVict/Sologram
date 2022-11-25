@@ -21,6 +21,7 @@
     "sourceMap": true,
     "pretty": true,
     "baseUrl": "./",
+    "types": ["node", "jest"],
     "paths": {
       "*": ["./node_modules/@types/*", "*"]
     },

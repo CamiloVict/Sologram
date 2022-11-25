@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { Link as LinkRouter } from "react-router-dom";
 
-export const Header = styled.header`
+export const Header = styled.nav`
   border-top: 1px solid #f1ece1;
   height: 45px;
   width: 100%;
@@ -17,4 +18,18 @@ export const Header = styled.header`
   right: 0;
   width: 100%;
   z-index: 1000;
+`;
+
+export const Link = styled(LinkRouter)<{
+  size?: string;
+  color: string;
+  border: string;
+}>`
+  ${(props) =>
+    props.border &&
+    css`
+       {
+        border-bottom: 1px solid ${props.border};
+      }
+    `}
 `;

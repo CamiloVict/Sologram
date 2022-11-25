@@ -1,7 +1,7 @@
 // * Dependencies
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 // *Components
-import { ContainerForm, Label, Input, Button } from "./style"
+import { ContainerForm, Label, Input, Button, ContainerPage, Division } from "./style"
 import { ImgWrapper, Image, Article } from '../../Card/style'
 import { AllFilters } from '../../AllFilters/AllFilters'
 // *Icons
@@ -11,14 +11,22 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeFilter, changeSource } from "../../../../src/store/reducerImage"
 // * Router
 import { useNavigate } from 'react-router-dom';
+// * Hooks
+import { useWindowSize } from "../../../../src/hooks/useWindowSize"
+
 
 const PostImage = () => {
   const size: string = '100px'
-
+  const windowSize = useWindowSize()
   // *States
   const [imageUrl, setImageUrl] = useState<string>('')
-  const [show, setShow] = useState<boolean>(false)
+  const [show, setShow] = useState<boolean>(true)
   const [name, setName] = useState<string>('')
+
+  // useEffect(() => {
+  //   windowSize <= 600 && setShow(!show)
+  // }, [windowSize])
+  
 
   // * State Store
   const { image } = useSelector((state: any) => state);
@@ -37,7 +45,7 @@ const PostImage = () => {
   const handleUpload = () => {
     try {
       new URL(imageUrl)
-      setShow(!show)
+      windowSize < 600 && setShow(!show)
       dispatch(changeSource(imageUrl))
     } catch {
       alert('The url is not valid')
@@ -45,6 +53,7 @@ const PostImage = () => {
   }
 
   const handleClick = () => {
+    if(name === '') return alert('The name value is REQUIRED')
     const date = new Date()
     const listPost = window.localStorage.getItem('posts')
 
@@ -71,36 +80,44 @@ const PostImage = () => {
       })
       window.localStorage.setItem('posts', JSON.stringify(listPostParse))
     }
-    navigate('/')
+    navigate('/home')
     dispatch(changeSource(''))
     dispatch(changeFilter(''))
   }
 
   return (
-    <>
-      <ContainerForm>
-        <Label >Enter an Image URL</Label>
-        <Input placeholder='' onChange={(event) => handleOnChange(event)} />
-        <Button onClick={handleUpload} >Upload!</Button>
-      </ContainerForm>
-      <Article>
-        <ImgWrapper>
-          {image.source
-            ? <Image src={image.source} filter={image.filter} />
-            : <BsUpload color="white" size={size} />
-          }
-        </ImgWrapper>
-      </Article>
-      <div>
-        <Label>Give it a name:</Label>
-        <Input placeholder='' onChange={(event) => handleOnChangeName(event)} />
-      </div>
-      <AllFilters />
+    <ContainerPage>
+      <Division>
+        {show &&
+          <ContainerForm>
+            <Label >Enter an Image URL</Label>
+            <Input placeholder='' onChange={(event) => handleOnChange(event)} />
+            <Button onClick={handleUpload} >Upload!</Button>
+          </ContainerForm>
+        }
+        <Article>
+          <ImgWrapper >
+            {image.source
+              ? <Image src={image.source} filter={image.filter} />
+              : <BsUpload color="white" size={size} />
+            }
+          </ImgWrapper>
+        </Article>
+      </Division>
 
-      <Button onClick={handleClick} >
-        Post Now!
-      </Button>
-    </>
+      <Division>
+        <ContainerForm>
+          <Label>Give it a name:</Label>
+          <Input placeholder='' onChange={(event) => handleOnChangeName(event)} />
+        </ContainerForm>
+        <AllFilters />
+
+        <Button onClick={handleClick} >
+          Post Now!
+        </Button>
+      </ Division>
+
+    </ContainerPage>
   )
 }
 

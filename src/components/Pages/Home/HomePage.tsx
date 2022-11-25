@@ -33,9 +33,7 @@ const HomePage = () => {
     return orderList.reverse().map((item: any, indexItem: number) => {
       const postTime: string | undefined = calcTime(item.date)
       return (
-        <ul key={indexItem}>
-          <Card id={indexItem} title={item.name} source={item.src} date={postTime}  filter={item.filter} />
-        </ul>
+          <Card id={indexItem} title={item.name} source={item.src} date={postTime}  filter={item.filter} key={indexItem} />
       )
     })
   }

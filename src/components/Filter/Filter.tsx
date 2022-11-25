@@ -20,7 +20,7 @@ export const Filter = ({ title }: TStyle) => {
   const filterNames: IObj = {
     normal: 'none',
     sepia: 'sepia(100%)',
-    contrast: 'contrast(100%)',
+    contrast: 'contrast(50%)',
     saturate: 'saturate(2)',
     grey: 'grayscale(100%)',
     hue: 'hue-rotate(80deg)',
@@ -43,7 +43,7 @@ export const Filter = ({ title }: TStyle) => {
             <Thumbnails src={image.source} filter={filter} onClick={handleClick} alt='Thumbnail photo' />
           </>
         )
-        : <BsFilterCircle />
+        : <BsFilterCircle size={'30px'}/>
       }
     </ContainerThumbnail>
   )

@@ -1,15 +1,25 @@
 import styled from "styled-components";
 
-
 export const Filters = styled.section`
-  height: 90px;
-  margin: 5px 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  overflow-x: scroll;
   overflow-y: hidden;
-  &::-webkit-slider-thumb {
-     -webkit-appearance: none;
+  overflow-x: scroll;
+  height: 350px;
+  width: 450px;
+  padding: 0 15px;
+
+  @media (max-width: 500px) {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    justify-content: flex-start;
+    height: 90px;
+    margin: 5px 0;
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+    }
+    width: 100vw;
   }
 `;

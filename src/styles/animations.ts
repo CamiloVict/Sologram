@@ -1,6 +1,6 @@
 import { css, keyframes } from "styled-components";
 
-const fadeInKeyFrames = keyframes`
+export const fadeInKeyFrames = keyframes`
   from{
     filter: blur(5px);
     opacity: 0;    
@@ -12,8 +12,8 @@ const fadeInKeyFrames = keyframes`
   }
 `;
 
-export const fadeIn = ({ time = "1s", type = "ease" } = {}) => {
-  css`
-    animation: ${time} ${fadeInKeyFrames} ${type};
-  `;
-};
+// export const fadeIn = ({ time = "1s", type = "ease" } = {}) => {
+//   css`
+//     animation: ${time} ${fadeInKeyFrames} ${type};
+//   `;
+// };

@@ -1,4 +1,4 @@
-import { useNearScreen } from '../../hooks/useNearScreen'
+import { useInView } from 'react-intersection-observer';
 
 import { ImgWrapper, Image, Article, ImageInfo, ArticleInfo, HeartWrapped } from './style'
 import { ICard } from './type'
@@ -17,6 +17,11 @@ export const Card = ({ title, date, source, filter, id }: ICard): JSX.Element =>
   // *State
   const [tapsNumber, setTapsNumber] = useState<number>(0);
   const [startDate, setStartDate] = useState<number>(Date.now());
+
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0.2,
+  });
 
   const bigTitle: string = '10px'
   const smallTitle: string = '8px'
@@ -39,7 +44,10 @@ export const Card = ({ title, date, source, filter, id }: ICard): JSX.Element =>
   };
 
   return (
-    <Article >
+    <Article ref={ref} >
+      {console.log(entry?.isIntersecting, title)}
+      {entry?.isIntersecting &&
+        <>
           <ArticleInfo >
             <ImageInfo size={bigTitle} color={'black'} >{title}</ImageInfo>
             <ImageInfo size={smallTitle} color={'grey'}>{date as any}</ImageInfo>
@@ -50,6 +58,8 @@ export const Card = ({ title, date, source, filter, id }: ICard): JSX.Element =>
               <AiFillHeart color={image.list[id].liked ? 'red' : 'white'} size={mediumIcon} onClick={handleLike} />
             </HeartWrapped>
           </ImgWrapper>
+        </>
+      }
     </Article>
   )
 }

@@ -14,7 +14,7 @@ export const ContainerPage = styled.div`
   }
 `;
 
-export const ContainerForm = styled.div<{ width?: string; height?: string; }>`
+export const ContainerForm = styled.div<{ width?: string; height?: string; padding?: string }>`
   height: max-content;
   display: flex;
   flex-direction: column;
@@ -26,12 +26,11 @@ export const ContainerForm = styled.div<{ width?: string; height?: string; }>`
     props &&
     css`
        {
+        padding-top: ${props.padding};
         width: ${props.width};
         height: ${props.height};
       }
     `}
-  @media (max-width: 500px) {
-  }
 `;
 
 export const Label = styled.label`

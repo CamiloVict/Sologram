@@ -3,11 +3,14 @@ import { ContainerForm, Label, Input, Button } from "../PostImage/style"
 
 import { Context } from '../../../../src/Context/Context'
 import { useNavigate } from 'react-router-dom'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
+import { useWindowSize } from '../../../../src/hooks/useWindowSize'
 
 const AuthPage = () => {
   const { isAuth, activateAuth } = useContext(Context);
   const navigate = useNavigate()
+
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 

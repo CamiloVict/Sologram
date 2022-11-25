@@ -64,7 +64,7 @@ export const Input = styled.input<{ width?: string; margin?: string; type?: stri
       }
     `}
   @media (max-width: 500px) {
-    width: 90%;
+    width: 300px;
   }
 `;
 
@@ -84,7 +84,7 @@ export const Button = styled.button<{width?:string}>`
       }
     `}
   @media (max-width: 500px) {
-    width: 90%;
+    width: 311px;
   }
 `;
 

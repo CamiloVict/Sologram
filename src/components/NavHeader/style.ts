@@ -9,10 +9,11 @@ export const Header = styled.header`
   align-items: center;
   align-items: center;
   background: #fcfcfc;
-  justify-content: space-around;
+  justify-content: center;
   left: 0;
   right: 0;
   width: 100%;
   position: fixed;
   z-index: 1000;
+  /* position: relative; */
 `;

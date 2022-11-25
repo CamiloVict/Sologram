@@ -43,7 +43,7 @@ export const Filter = ({ title }: TStyle) => {
             <Thumbnails src={image.source} filter={filter} onClick={handleClick} alt='Thumbnail photo' />
           </>
         )
-        : <BsFilterCircle size={'30px'}/>
+        : <BsFilterCircle size={'30px'} />
       }
     </ContainerThumbnail>
   )

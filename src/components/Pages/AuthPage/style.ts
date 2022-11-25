@@ -7,4 +7,5 @@ export const ContainerAuthPage = styled.section<{color?:string}>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `

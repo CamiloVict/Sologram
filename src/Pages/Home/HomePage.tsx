@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 // * Component
-import { ErrorComponent } from "../../../../src/components/Error/Error";
-import { Card } from "../../Card/Card"
+import { ErrorComponent } from "../../components/Error/Error";
+import { Card } from "../../components/Card/Card"
 // * Store
 import { useSelector, useDispatch } from 'react-redux'
-import { changeList } from "../../../../src/store/reducerImage";
+import { changeList } from "../../store/reducerImage";
 
 import moment from 'moment'
 import { ContainerList } from "./style";

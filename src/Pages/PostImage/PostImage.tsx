@@ -2,17 +2,17 @@
 import { useCallback, useState } from "react"
 // *Components
 import { ContainerForm, Label, Input, Button, ContainerPage, Division } from "./style"
-import { ImgWrapper, Image, Article } from '../../Card/style'
-import { AllFilters } from '../../AllFilters/AllFilters'
+import { ImgWrapper, Image, Article } from '../../components/Card/style'
+import { AllFilters } from '../../components/AllFilters/AllFilters'
 // *Icons
 import { BsUpload } from 'react-icons/bs'
 // * Store
 import { useSelector, useDispatch } from 'react-redux'
-import { changeFilter, changeSource } from "../../../../src/store/reducerImage"
+import { changeFilter, changeSource } from "../../store/reducerImage"
 // * Router
 import { useNavigate } from 'react-router-dom';
 // * Hooks
-import { useWindowSize } from "../../../../src/hooks/useWindowSize"
+import { useWindowSize } from "../../hooks/useWindowSize"
 
 
 const PostImage = () => {

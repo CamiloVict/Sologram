@@ -2,15 +2,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { GlobalStyle } from './styles/GlobalStyle'
 
 // * Components
-import Layout from './components/Layout/Layout'
-import HomePage from './components/Pages/Home/HomePage'
-import PostImage from './components/Pages/PostImage/PostImage'
-import AuthPage from './components/Pages/AuthPage/AuthPage'
+import Layout from './Layout/Layout'
+import HomePage from './Pages/Home/HomePage'
+import PostImage from './Pages/PostImage/PostImage'
+import AuthPage from './Pages/AuthPage/AuthPage'
 import { NotRegisteredUser } from './components/NotRegisteredUser/NotRegisteredUser'
 
 // * Context
 import { Context } from './Context/Context'
-
 
 function App() {
 

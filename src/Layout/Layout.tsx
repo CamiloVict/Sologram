@@ -1,6 +1,6 @@
 // *Component
-import { FooterNav } from '../FooterNav/FooterNav';
-import { NavHeader } from '../NavHeader/NavHeader'
+import { FooterNav } from '../components/FooterNav/FooterNav';
+import { NavHeader } from '../components/NavHeader/NavHeader'
 import { Container } from './style'
 
 function Layout(props: any) {

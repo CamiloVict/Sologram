@@ -1,10 +1,10 @@
 import { ContainerAuthPage } from './style'
 import { ContainerForm, Label, Input, Button } from "../PostImage/style"
 
-import { Context } from '../../../../src/Context/Context'
+import { Context } from '../../Context/Context'
 import { useNavigate } from 'react-router-dom'
 import { useContext, useState } from 'react'
-import { useWindowSize } from '../../../../src/hooks/useWindowSize'
+import { useWindowSize } from '../../hooks/useWindowSize'
 
 const AuthPage = () => {
   const { isAuth, activateAuth } = useContext(Context);

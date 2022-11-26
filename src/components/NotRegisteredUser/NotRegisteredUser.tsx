@@ -1,5 +1,5 @@
-import { ContainerAuthPage } from '../Pages/AuthPage/style'
-import { ContainerForm, Label, Input, Button } from "../Pages/PostImage/style"
+import { ContainerAuthPage } from '../../Pages/AuthPage/style'
+import { ContainerForm, Label, Input, Button } from "../../Pages/PostImage/style"
 import { useNavigate } from 'react-router-dom'
 
 

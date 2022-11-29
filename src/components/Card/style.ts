@@ -56,6 +56,10 @@ export const ArticleInfo = styled.div`
 `;
 
 export const ImageInfo = styled.h3<{ size: string; color: string }>`
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis !important;
   @media (max-width: 500px) {
     height: fit-content;
   }

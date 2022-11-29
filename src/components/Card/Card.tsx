@@ -47,7 +47,7 @@ export const Card = ({ title, date, source, filter, id }: ICard): JSX.Element =>
       {entry?.isIntersecting &&
         <>
           <ArticleInfo >
-            <ImageInfo size={bigTitle} color={'black'} >{title}</ImageInfo>
+            <ImageInfo size={bigTitle} color={'black'} title={title} >{title}</ImageInfo>
             <ImageInfo size={smallTitle} color={'grey'}>{date as any}</ImageInfo>
           </ArticleInfo>
           <ImgWrapper  >
